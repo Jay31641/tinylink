@@ -15,17 +15,17 @@ class Dashboard extends React.Component {
       createError: "",
       successMessage: "",
     };
+
+    this.backendUrl = "https://tinylink-iwdp.onrender.com";
   }
 
   componentDidMount() {
-    fetch("https://tinylink-iwdp.onrender.com/api/links")
+    fetch(`${this.backendUrl}/api/links`)
       .then((res) => res.json())
-      .then((data) => {
-        this.setState({ links: data, loading: false });
-      })
-      .catch(() => {
-        this.setState({ error: "Unable to load links", loading: false });
-      });
+      .then((data) => this.setState({ links: data, loading: false }))
+      .catch(() =>
+        this.setState({ error: "Unable to load links", loading: false })
+      );
   }
 
   handleInputChange = (e) => {
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
       code: customCode.trim() === "" ? undefined : customCode.trim(),
     };
 
-    fetch("https://tinylink-iwdp.onrender.com/api/links", {
+    fetch(`${this.backendUrl}/api/links`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bodyData),
@@ -84,18 +84,14 @@ class Dashboard extends React.Component {
           customCode: "",
         }));
       })
-      .catch((err) => {
-        this.setState({ createError: err.message });
-      })
-      .finally(() => {
-        this.setState({ creating: false });
-      });
+      .catch((err) => this.setState({ createError: err.message }))
+      .finally(() => this.setState({ creating: false }));
   };
 
   deleteLink = (code) => {
     if (!window.confirm("Are you sure you want to delete this link?")) return;
 
-    fetch(`https://tinylink-iwdp.onrender.com/api/links/${code}`, {
+    fetch(`${this.backendUrl}/api/links/${code}`, {
       method: "DELETE",
     })
       .then(async (res) => {
@@ -105,14 +101,12 @@ class Dashboard extends React.Component {
         }
         return res.json();
       })
-      .then(() => {
+      .then(() =>
         this.setState((prev) => ({
-          links: prev.links.filter((link) => link.code !== code),
-        }));
-      })
-      .catch((err) => {
-        alert("Delete failed: " + err.message);
-      });
+          links: prev.links.filter((l) => l.code !== code),
+        }))
+      )
+      .catch((err) => alert("Delete failed: " + err.message));
   };
 
   render() {
@@ -176,25 +170,33 @@ class Dashboard extends React.Component {
             <table className="links-table">
               <thead>
                 <tr>
-                  <th className="links-table-header">Code</th>
-                  <th className="links-table-header">URL</th>
-                  <th className="links-table-header">Clicks</th>
-                  <th className="links-table-header">Last Clicked</th>
-                  <th className="links-table-header">Actions</th>
+                  <th>Short URL</th>
+                  <th>Original URL</th>
+                  <th>Clicks</th>
+                  <th>Last Clicked</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
                 {links.map((link) => (
                   <tr key={link.code}>
-                    <td className="links-table-cell">{link.code}</td>
-                    <td className="links-table-cell">{link.url}</td>
-                    <td className="links-table-cell">{link.click_count}</td>
-                    <td className="links-table-cell">
-                      {link.last_clicked || "Never"}
+                    <td>
+                      <a
+                        href={`${this.backendUrl}/${link.code}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="short-link"
+                      >
+                        {this.backendUrl}/{link.code}
+                      </a>
                     </td>
 
-                    <td className="links-table-cell">
+                    <td>{link.url}</td>
+                    <td>{link.click_count}</td>
+                    <td>{link.last_clicked || "Never"}</td>
+
+                    <td>
                       <Link to={`/code/${link.code}`}>
                         <button className="view-btn" style={{ marginRight: "8px" }}>
                           View

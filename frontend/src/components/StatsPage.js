@@ -10,22 +10,20 @@ class StatsPageBase extends React.Component {
       loading: true,
       error: "",
     };
+
+    this.backendUrl = "https://tinylink-iwdp.onrender.com";
   }
 
   componentDidMount() {
     const { code } = this.props.params;
 
-    fetch(`https://tinylink-iwdp.onrender.com/api/links/${code}`)
+    fetch(`${this.backendUrl}/api/links/${code}`)
       .then((res) => {
         if (!res.ok) throw new Error("Code not found");
         return res.json();
       })
-      .then((data) => {
-        this.setState({ link: data, loading: false });
-      })
-      .catch((err) => {
-        this.setState({ error: err.message, loading: false });
-      });
+      .then((data) => this.setState({ link: data, loading: false }))
+      .catch((err) => this.setState({ error: err.message, loading: false }));
   }
 
   render() {
