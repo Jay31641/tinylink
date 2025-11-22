@@ -14,9 +14,7 @@
   padding: 20px;
 }
 
-/* -------------------------
-   CARD BOXES
-------------------------- */
+/* CARD BOXES */
 
 .card-box {
   background-image: linear-gradient(135deg, #fdfcfb, #e6c3a8);
@@ -27,9 +25,7 @@
 }
 
 
-/* -------------------------
-   FORM STYLES
-------------------------- */
+/* FORM STYLES */
 
 .link-form {
   display: flex;
@@ -58,9 +54,7 @@
   background: #005fd1;
 }
 
-/* -------------------------
-   LINKS TABLE
-------------------------- */
+/* LINKS TABLE */
 
 .links-table {
   width: 100%;
@@ -82,9 +76,7 @@
   vertical-align: middle;
 }
 
-/* -------------------------
-   BUTTONS
-------------------------- */
+/* BUTTONS */
 
 .view-btn {
   padding: 8px 14px;
@@ -114,9 +106,7 @@
   background-color: #cc0000;
 }
 
-/* -------------------------
-   STATS PAGE
-------------------------- */
+/* STATS PAGE*/
 
 .stats-card {
   background: white;
@@ -130,4 +120,18 @@
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.short-url-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.short-url-link:hover {
+  text-decoration: underline;
+}
+
+.links-table-cell a {
+  word-break: break-all;
 }

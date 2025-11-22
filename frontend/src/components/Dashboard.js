@@ -181,24 +181,36 @@ class Dashboard extends React.Component {
               <tbody>
                 {links.map((link) => (
                   <tr key={link.code}>
-                    <td>
+                    {/* Short URL - clickable */}
+                    <td className="links-table-cell">
                       <a
-                        href={`${this.backendUrl}/${link.code}`}
+                        href={`https://tinylink-iwdp.onrender.com/${link.code}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="short-link"
+                        className="short-url-link"
                       >
-                        {this.backendUrl}/{link.code}
+                        https://tinylink-iwdp.onrender.com/{link.code}
                       </a>
                     </td>
 
-                    <td>{link.url}</td>
-                    <td>{link.click_count}</td>
-                    <td>{link.last_clicked || "Never"}</td>
+                    {/* Original URL */}
+                    <td className="links-table-cell">{link.url}</td>
 
-                    <td>
+                    {/* Click count */}
+                    <td className="links-table-cell">{link.click_count}</td>
+
+                    {/* Last clicked time */}
+                    <td className="links-table-cell">
+                      {link.last_clicked || "Never"}
+                    </td>
+
+                    {/* Buttons */}
+                    <td className="links-table-cell">
                       <Link to={`/code/${link.code}`}>
-                        <button className="view-btn" style={{ marginRight: "8px" }}>
+                        <button
+                          className="view-btn"
+                          style={{ marginRight: "8px" }}
+                        >
                           View
                         </button>
                       </Link>
