@@ -171,7 +171,6 @@ class Dashboard extends React.Component {
               <thead>
                 <tr>
                   <th>Short URL</th>
-                  <th>Original URL</th>
                   <th>Clicks</th>
                   <th>Last Clicked</th>
                   <th>Actions</th>
@@ -192,10 +191,6 @@ class Dashboard extends React.Component {
                         https://tinylink-iwdp.onrender.com/{link.code}
                       </a>
                     </td>
-
-                    {/* Original URL */}
-                    <td className="links-table-cell">{link.url}</td>
-
                     {/* Click count */}
                     <td className="links-table-cell">{link.click_count}</td>
 
