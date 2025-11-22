@@ -49,14 +49,6 @@ PostgreSQL (Neon Database)
 
 Render (Hosting)
 
-Folder Structure
-tinylink/
- ├── backend/
- └── frontend/
-     ├── src/
-     ├── public/
-     ├── package.json
-
 API Endpoints
 Create short link
 POST /api/links
