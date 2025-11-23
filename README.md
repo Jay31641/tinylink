@@ -1,19 +1,19 @@
-TinyLink – URL Shortener Web App
+TinyLink – URL Shortener Web App:
 
 This is my take-home assignment project.
 TinyLink is a simple URL shortener similar to bit.ly.
 Users can create short links, view stats, and manage all their links in one place.
 
-Live Links
+Live Links:
 
-Frontend (Vercel): https://your-frontend-url-here
+Frontend (Vercel): https://tinylink-opal.vercel.app/
 
-Backend (Render): https://your-backend-url-here
+Backend (Render): https://tinylink-iwdp.onrender.com
 
 Health Check: /healthz
 
 
-Features
+Features:
 
 Create short links from long URLs
 
@@ -31,9 +31,9 @@ Stats page for each short link
 
 Simple and responsive UI
 
-Tech Stack
+Tech Stack:
 
-Frontend
+Frontend:
 
 React.js (Class Components)
 
@@ -41,7 +41,7 @@ CSS (custom classes)
 
 Fetch API
 
-Backend
+Backend:
 
 Node.js + Express
 
@@ -69,9 +69,6 @@ Environment Variables
 Backend (.env)
 DATABASE_URL=your_neon_url
 PORT=10000
-
-Frontend (Vercel)
-REACT_APP_API_URL=https://your-backend-url
 
 How to Run Locally
 Backend
